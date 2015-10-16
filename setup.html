@@ -40,6 +40,47 @@
         </div><!--/.container-fluid -->
     </nav>
 
+    <script>
+        // Only works after `FB.init` is called
+        function myFacebookLogin() {
+            FB.login(function(){}, {scope: 'publish_actions'});
+        }
+    </script>
+
+    <script>
+        //facebook api
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '1720305841531629',
+                xfbml      : true,
+                version    : 'v2.4'
+            });
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <div class="jumbotron">
+        <h1>Setup Facebook</h1>
+        <p>Allow our app to connect to your facebook account!
+            Please click the button below and login to your facebook profile</p>
+        <p><a class="btn btn-primary btn-lg" onclick="myFacebookLogin()" role="button">Verify</a></p>
+    </div>
+
+    </div>
+
+
+
+</body>
+</html>
+
+
 </body>
 </html>
 </div> <!-- /container -->
