@@ -7,10 +7,14 @@
   <body>
     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"> </div>
     <script>
+        var profileID;
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+          
+          profileID = profile.getId();
+        
+          console.log("ID: " + profile.getId()); // Don't send this directly to your server!
         console.log("Name: " + profile.getName());
         console.log("Image URL: " + profile.getImageUrl());
         console.log("Email: " + profile.getEmail());
@@ -24,7 +28,6 @@
         
     // Gets the activities for a profile
     function getActivities(){
-        var profileID = profile.getId();
         var activities = null;      
         var URL        = "https://www.googleapis.com/plus/v1/people/" + profileID + "/activities/public?alt=json&key=" + key;
         var request = new XMLHttpRequest();
