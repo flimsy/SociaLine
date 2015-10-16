@@ -20,14 +20,18 @@
         console.log("ID Token: " + id_token);
       
       
-          var request = gapi.client.plus.activities.get({ 'activityId' : activityId });
+          var request = gapi.client.plus.activities.list({
+              'userId' : 'me',
+              'collection' : 'public'
+            });
 
-        request.execute(function(resp) {
-          console.log('Used get to fetch activity with ID: ' + resp.id);
-          console.log('Activity content: ' + resp.object.content);
-          console.log('+1s: ' + resp.object.plusoners.totalItems);
-          console.log('Number of comments: ' + resp.object.replies.totalItems);
-        });
+            request.execute(function(resp) {
+              var numItems = resp.items.length;
+              for (var i = 0; i < numItems; i++) {
+                console.log('ID: ' + resp.items[i].id + ' Content: ' +
+                  resp.items[i].object.content);
+              }
+            });
       
       };
         
