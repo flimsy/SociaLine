@@ -3,13 +3,10 @@
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="921670254349-04pq5ocn94v24vj0s5m5g2jciu9obphj.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-      
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        
   </head>
   <body>
     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"> </div>
-    <!--script>
+    <script>
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
@@ -20,83 +17,25 @@
 
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);        
+        console.log("ID Token: " + id_token);
+      
+        
+        client.plus.activities.list({
+            userId: 'me',
+            collection: 'public',
+            maxResults: 100
+        }, {}) 
+            .withAuthClient(auth)
+            .execute(function (err, response) {
+            console.log('activities---------------------->', response.items);
+        });
       
       };
-        
-        // This sample assumes a client object has been created.
-        // To learn more about creating a client, check out the starter:
-        //  https://developers.google.com/+/quickstart/javascript
-
-        
-        
-    </script-->
+    </script>
       
-      
-      <div id="posts"></div>
-
-        <script type="text/javascript">
-            
-        function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log("Name: " + profile.getName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);    
-            
-            
-            
-          var plusId = 'profile.getId()';
-          var apiKey = 'AIzaSyAXaL2j3SCW-FdhdaomsiKVW2VDX-iG-ts';
-
-          function start(){
-            gapi.client.setApiKey( apiKey );
-            gapi.client.load('plus','v1', function(){
-              console.log('loaded');
-              gapi.client.plus.activities.list({
-                userId: plusId,
-                collection: 'public',
-                maxResults: 10
-              }).execute(function(resp){
-                if( resp && resp.items && resp.items.length > 0 ){
-                  for( var co=0; co<resp.items.length; co++ ){
-                    $('#posts').append('<div class="post"><div id="posts-'+co+'"></div></div>');
-                    var url = resp.items[co].object.url;
-                    gapi.post.render('posts-'+co, {url:url});
-                  }
-                } else {
-                  console.log('invalid resp', resp);
-                }
-              });
-            });
-          }
-
-          (function(){
-            var po = document.createElement( 'script' );
-            po.type = 'text/javascript';
-            po.async = true;
-            po.src = 'https://plus.google.com/js/client:plusone.js?onload=start';
-            var s = document.getElementsByTagName( 'script' )[0];
-            s.parentNode.insertBefore( po, s );
-          })();
-      
-            
-            
-        };
-
-        </script>
-      
-      
-      
-      <div>
       <g:plus action="share"></g:plus>
       
        <g:plusone></g:plusone>
-      </div>
+      
   </body>
 </html>
