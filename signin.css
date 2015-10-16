@@ -24,6 +24,9 @@ body {
 
 }
 
+.navbar-brand {
+  font-family: myFirstFont;
+}
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
   margin-bottom: 10px;

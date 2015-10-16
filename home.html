@@ -10,40 +10,79 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-    <link href="signin.css" rel="stylesheet">
+    <link href="home.css" rel="stylesheet">
 </head>
 <body>
 
-<body class="containcolor">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+<div class="container">
+
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menubtns">
-                    <span class="icon-bar"></span>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
-                <!--branded logo-->
-                <a href="#" class="navbar-brand">Trevaughn Daley</a>
-            </div><!--End navbar-header-->
-            <div class="collapse navbar-collapse" id="menubtns">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#about-me">About Me</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul><!--End menu list-->
+                <a class="navbar-brand" href="home.html">SociaLine</a>
             </div>
-        </div><!--End Container-->
-    </nav><!--End navbar-->
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="submission.html">New</a></li>
+                    <li><a href="setup.html">Setup</a></li>
+                    <li><a href="#">About</a></li>
 
-    <div class="row">
-        <div class="col-md-4">.col-md-4</div>
-        <div class="col-md-4">.col-md-4</div>
-        <div class="col-md-4">.col-md-4</div>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+
+
+
+    <div class="col-md-4">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Twitter</h3>
+
+
+            </div>
+        gggg
+        </div>
     </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Facebook</h3>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Google +</h3>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
 
 </body>
