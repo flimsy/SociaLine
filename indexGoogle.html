@@ -18,9 +18,26 @@
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
-      };
-    </script>
       
+      
+          var request = gapi.client.plus.activities.get({ 'activityId' : activityId });
+
+        request.execute(function(resp) {
+          console.log('Used get to fetch activity with ID: ' + resp.id);
+          console.log('Activity content: ' + resp.object.content);
+          console.log('+1s: ' + resp.object.plusoners.totalItems);
+          console.log('Number of comments: ' + resp.object.replies.totalItems);
+        });
+      
+      };
+        
+        // This sample assumes a client object has been created.
+        // To learn more about creating a client, check out the starter:
+        //  https://developers.google.com/+/quickstart/javascript
+
+        
+        
+    </script>
       
       <g:plus action="share"></g:plus>
       
