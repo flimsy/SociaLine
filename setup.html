@@ -43,7 +43,13 @@
     <script>
         // Only works after `FB.init` is called
         function myFacebookLogin() {
-            FB.login(function(){}, {scope: 'publish_actions'});
+            FB.getLoginStatues(function(reponse){
+               if(response.status == 'connected') {
+                   console.log('Logged in')
+               } else {
+                   FB.login(function(){}, {scope: 'publish_actions'});
+               }
+            });
         }
     </script>
 
@@ -70,7 +76,16 @@
         <h1>Setup Facebook</h1>
         <p>Allow our app to connect to your facebook account!
             Please click the button below and login to your facebook profile</p>
-        <p><a class="btn btn-primary btn-lg" onclick="myFacebookLogin()" role="button">Verify</a></p>
+        <script>
+            FB.getLoginStatues(function(reponse){
+                if(response.status == 'connected') {
+                    document.getElementById("loginB").innerHTML = "Verified!";
+                } else {
+                    FB.login(function(){}, {scope: 'publish_actions'});
+                }
+            });
+        </script>>
+        <p><a id="loginB" class="btn btn-primary btn-lg" onclick="myFacebookLogin()" role="button">Verify</a></p>
     </div>
 
     </div>
