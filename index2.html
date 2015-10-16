@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="921670254349-mor1avo4bt6r9ijnlm0lfjv00sqp1vpd.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <title>Socialine</title>
+</head>
+<body>
+
+Facebook Authentication
+
+<script>
+    // Only works after `FB.init` is called
+    function myFacebookLogin() {
+        FB.login(function(){}, {scope: 'publish_actions'});
+    }
+</script>
+<button onclick="myFacebookLogin()">Login with Facebook</button>
+
+
+
+
+
+<!-- Twitter Api-->
+<script type="text/javascript" src="js/codebird.js"></script>
+
+<script type="text/javascript">
+    var cb = new Codebird;
+    cb.setConsumerKey("5ATTZ8AYoOn2ICUcLEnJw5put", "AwgPOmE5WWCPq3nOYC54haUTSLjOgq7OJLWfsczmFo0EWZ8h8V");
+
+    function myTwitterLogin() {
+        // gets a request token
+        cb.__call(
+                "oauth_requestToken",
+                {oauth_callback: "oob"},
+                function (reply, rate, err) {
+                    if (err) {
+                        console.log("error response or timeout exceeded" + err.error);
+                    }
+                    if (reply) {
+                        // stores it
+                        cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+
+                        // gets the authorize screen URL
+                        cb.__call(
+                                "oauth_authorize",
+                                {},
+                                function (auth_url) {
+                                    window.codebird_auth = window.open(auth_url);
+                                }
+                        );
+                    }
+                }
+        );
+    }
+</script>
+
+<button onclick="myTwitterLogin()">Login with Twitter</button>
+
+<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+<script>
+    function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log("Name: " + profile.getName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+    };
+</script>
+
+</body>
+<script>
+    //facebook api
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1720305841531629',
+            xfbml      : true,
+            version    : 'v2.4'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+</html>
