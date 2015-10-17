@@ -44,9 +44,11 @@
                 }
             }
             
+            var pID;
+            
             function gAPI(url) {
                 //var userActivities=null;
-                $('#result').html('');
+                //$('#result').html('');
                 
                 gapi.client.request({path:'/plus/v1'+url, method:'GET', callback:function(result) {
                     console.log(result);
@@ -55,7 +57,7 @@
                     
                     ////////
                     
-                    
+                    pID = result['id'];
                     
                     /*userActivities = JSON.parse(result.responseText);
                     console.log("Discovered " + userActivities.length + " user activities");
@@ -65,10 +67,34 @@
                     }*/
                     
                     ////
-                    $('#result').html(print_r(result));
+                    //$('#result').html(print_r(result));
                 }})
             }
             
+            function getActivities() {
+                var key = "AIzaSyAXaL2j3SCW-FdhdaomsiKVW2VDX-iG-ts";
+                var activities = null;
+                var URL = "https://www.googleapis.com/plus/v1/people/"+pID+"/activities/public?alt=json&key=" + key;
+                var request = new XMLHttpRequest();
+                request.open('GET', URL, false);
+                request.send();
+                
+                if(request.status===200) {
+                    console.log("retrieved activities\n\n");
+                    activities=jQuery.parseJSON(request.responseText).items;
+                    console.log("Discovered " + activities.length + " activities");
+            
+                }else{
+            
+                //handleRequestIssue(request);
+                }
+                for (var i=0; i < activities.length; i++) {
+                    console.log("trying to do something with an activity: " + i);
+                    var activity = activities[i];
+                    console.log(activity.id);
+                }
+                
+                
             function print_r(o){
                 return JSON.stringify(o,null,'\t').replace(/\n/g,'<br>').replace(/\t/g,'&nbsp;&nbsp;&nbsp;'); 
             }  

@@ -228,6 +228,54 @@
                     <h3 class="panel-title">Google +</h3>
                 </div>
             </div>
+            
+            <div id="gposts"></div>
+            
+            <script type="text/javascript">
+            (function() {
+                var po=document.createElement('script');
+                po.type='text/javascript';
+                po.async=true;
+                po.src='https://apis.google.com/js/client:plusone.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(po, s);
+            })();
+            
+            function signinCallback(authResult) {
+                console.log(authResult);
+                if(authResult['access_token']) {
+                    gAPI('/people/me');
+                } else if (authResult['error']) {
+                    console.log("BIG ERRROROROR");
+                }
+            }
+            
+            function gAPI(url) {
+                //var userActivities=null;
+                //$('#result').html('');
+                $('#gposts').html('');
+                
+                gapi.client.request({path:'/plus/v1'+url, method:'GET', callback:function(result) {
+                    console.log(result);
+                    console.log(result['displayName']);
+                    console.log(result['name']);
+                    
+                    $('#gposts').html(result['displayName']);
+                    
+                    
+                    
+                    ////
+                    //$('#result').html(print_r(result));
+                }})
+            }
+            
+            function print_r(o){
+                return JSON.stringify(o,null,'\t').replace(/\n/g,'<br>').replace(/\t/g,'&nbsp;&nbsp;&nbsp;'); 
+            }  
+            
+                
+        </script>
+        
 
             <!--
             content here
