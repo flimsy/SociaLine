@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+home3<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/component.css" />
-    <!--link href='http://fonts.googleapis.com/css?family=Raleway:200,400,800|Clicker+Script' rel='stylesheet' type='text/css'-->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:200,400,800|Clicker+Script' rel='stylesheet' type='text/css'>
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -254,7 +254,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div align="center">
-                    <!--img src="img/google_plus.png" alt="googleplus" height="50" width="50" class="img-responsive"-->
+                    <img src="img/google_plus.png" alt="googleplus" height="50" width="50" class="img-responsive">
                     <h3 class="panel-title">Google +</h3>
                 </div>
             </div>
@@ -274,112 +274,34 @@
             function signinCallback(authResult) {
                 console.log(authResult);
                 if(authResult['access_token']) {
-                    user_gAPI('/people/me');
-                    circles_gAPI('/people/me/people/visible');
+                    gAPI('/people/me');
                 } else if (authResult['error']) {
                     console.log("BIG ERRROROROR");
                 }
             }
-                
-            var user_pID;
             
-            function user_gAPI(url) {
-                //$('#gposts').html('');
+            function gAPI(url) {
+                //var userActivities=null;
+                //$('#result').html('');
+                $('#gposts').html('');
                 
                 gapi.client.request({path:'/plus/v1'+url, method:'GET', callback:function(result) {
                     console.log(result);
                     console.log(result['displayName']);
-                    //console.log(result['name']);
+                    console.log(result['name']);
+                    
+                    $('#gposts').html(result['displayName']);
                     
                     
-                    user_pID = result['id'];
-                    getuserActivities(user_pID);
-                    //$('#gposts').html(result['displayName']);
-
+                    
+                    ////
+                    //$('#result').html(print_r(result));
                 }})
             }
             
-            var circles_pID;
-                
-            function circles_gAPI(url) {
-                //$('#gposts').html('');
-                
-                gapi.client.request({path:'/plus/v1'+url, method:'GET', callback:function(result) {
-                    //console.log(result);
-                    //console.log(result['displayName']);
-                    
-                    //console.log(result['items'].length);
-                    
-                    circles_pID = result['items'][2]['id'];
-                    
-                    
-                    //getcirclesActivities(circles_pID);
-                    
-                    //$('#gposts').html(result['displayName']);
-                    
-                }})
-            }
-            var activities = null;
-            function getuserActivities(pID) {
-                var key = "AIzaSyAXaL2j3SCW-FdhdaomsiKVW2VDX-iG-ts";
-                
-                var URL = "https://www.googleapis.com/plus/v1/people/"+pID+"/activities/public?alt=json&key=" + key;
-                var request = new XMLHttpRequest();
-                request.open('GET', URL, false);
-                request.send();
-                
-                if(request.status===200) {
-                    //console.log("retrieved activities\n\n");
-                    activities=jQuery.parseJSON(request.responseText).items;
-                    //console.log("Discovered " + activities.length + " activities");
-            
-                }else{
-            
-                //handleRequestIssue(request);
-                }
-                
-                    
-            }
-                function displayActivities() {
-                    var name;
-                    var img1;
-                    var message;
-                
-                for (var i=0; i < activities.length; i++) {
-                    //console.log("trying to do something with an activity: " + i);
-                    var activity = activities[i];
-                    
-                    //console.log(activity);
-                    var mainelement = document.createElement("div");
-                    var act = document.createElement("h2");
-                    var act1 = document.createTextNode(activity.actor[0]);
-                    //console.log(activity.actor[0]);
-                    
-                    var im3 = document.createElement("img");
-                    im3.src = activity.actor.image[0];
-                    //console.log(activity.actor.image[0]);
-                    
-                    var h1 = document.createElement("h1");
-                    
-                    
-                    var para = document.createElement("p");
-                    var node = document.createTextNode(activity.object[1]);//put the user text or postt
-                    //console.log(activity.object[1]);
-                    para.appendChild(node);
-
-                    h1.appendChild(im3)
-                    h1.appendChild(act1);
-                    h1.appendChild(para);
-
-                    mainelement.appendChild(h1);
-
-                    var element = document.getElementById("gposts");
-                    element.appendChild(mainelement);
-                    }
-                }
-            
-            
-            
+            function print_r(o){
+                return JSON.stringify(o,null,'\t').replace(/\n/g,'<br>').replace(/\t/g,'&nbsp;&nbsp;&nbsp;'); 
+            }  
             
                 
         </script>
@@ -387,14 +309,7 @@
 
         <div class="gplus gplus1" id="google_drive_null">
             <center>
-            <div id="im1"><span class="g-signin" 
-                          data-callback="signinCallback"
-                          data-clientid="921670254349-04pq5ocn94v24vj0s5m5g2jciu9obphj.apps.googleusercontent.com"
-                          data-cookiepolicy="single_host_origin"
-                          data-requestvisibleactions="http://schemas.google.com/AddActicty"
-                          data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email"
-                          >
-                    </span>
+            <div id="im1"> <img src="img/google_plus.png" class="img-rounded center" alt="google drive logo" width="100" height="100">
             </div>
             <br>
             <br>
