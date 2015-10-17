@@ -15,14 +15,11 @@
     <script src="./home.js"></script>
 
     <!-- React.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-with-addons.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-with-addons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <link href="home.css" rel="stylesheet">
+    <link href="./home.css" rel="stylesheet">
 </head>
 <body>
 
@@ -64,7 +61,28 @@
                 </div>
             </div>
             <!-- add tweet here -->
-            <div id="tweet"></div>
+            <!-- <div id="tweet"></div> -->
+            <div class="container-fluid" id="content"></div>
+
+            <script type="text/jsx">
+            
+                var BuckysComponent = React.createClass({
+                    render: function() {
+                        return (
+                            <div>
+                                <h3>{this.props.user}</h3>
+                                <p>{this.props.children}</p>
+                            </div>
+                        );
+                    }
+                });
+
+                React.render(
+                    <div>
+                        <BuckysComponent user="username goes here">Tweet goes here</BuckysComponent>
+                    </div>, document.getElementById('content'));
+
+            </script>
             
             <br>
             <br>
