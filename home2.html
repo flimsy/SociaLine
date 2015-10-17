@@ -317,34 +317,8 @@
                     var activity = activities[i];
                     
                     console.log(activity);
-                    //name
-                    //var mainelement = document.createElement("div");
-                    //var act = document.createElement("h2");
-                    //var act1 = document.createTextNode(activity.actor[0]);
-                    console.log(activity.actor[0]);
                     
-                    //image
-                    //var im3 = document.createElement("img");
-                    //im3.src = activity.actor.image[0];
-                    console.log(activity.actor.image[0]);
-                    
-                    //var h1 = document.createElement("h1");
-                    
-                    
-                    //message
-                    //var para = document.createElement("p");
-                    //var node = document.createTextNode(activity.object[1]);//put the user text or postt
-                    console.log(activity.object[1]);
-                    //para.appendChild(node);
-
-                    //h1.appendChild(im3)
-                    //h1.appendChild(act1);
-                    //h1.appendChild(para);
-
-                    //mainelement.appendChild(h1);
-
-                    //var element = document.getElementById("gposts");
-                    //element.appendChild(mainelement);
+                    console.log(print_r(activity));
                 }
             
                 }else{
@@ -352,10 +326,11 @@
                 //handleRequestIssue(request);
                 }
                 
-                    
-                
             }
-            
+                
+              function print_r(o){
+                return JSON.stringify(o,null,'\t').replace(/\n/g,'<br>').replace(/\t/g,'&nbsp;&nbsp;&nbsp;'); 
+            }  
             
                 
         </script>
