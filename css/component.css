@@ -83,6 +83,14 @@
 	color: #222;
 }
 
+.content {
+	margin-left: auto;
+	margin-right: auto;
+	table-layout: fixed;
+	border-collapse: collapse;
+	z-index: -1; position:relative
+}
+
 .main-title .thin {
 	font-weight: 200;
 }

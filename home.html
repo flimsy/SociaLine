@@ -31,6 +31,7 @@
 
     <link href="./home.css" rel="stylesheet">
 </head>
+
 <body>
 
 
@@ -44,15 +45,18 @@
                 // facebookInit();
             }
             else {
-                console.log('initiate FB login...');
-                FB.login();
+
+                console.log('need to login');
             }
         });
 
+<<<<<<< Updated upstream
         // *** here is my code ***
         if (typeof facebookInit == 'function') {
 //              facebookInit();
         }
+=======
+>>>>>>> Stashed changes
     };
 
     (function(d){
@@ -94,6 +98,8 @@
 
                         var element = document.getElementById("facebookposts");
                         element.appendChild(h1);
+
+                        h1.className = "eachcolumn";
                     }
 
                     console.log(data['posts']);
@@ -104,34 +110,7 @@
 </script>
 
 
-<div class="container">
-
-    <!-- Static navbar -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="home.html">SociaLine</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="submission.html">New</a></li>
-                    <li><a href="setup.html">Setup</a></li>
-                    <li><a href="#">About</a></li>
-
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-    </nav>
-
-
-
+    <h1 style="padding-left: 20px; color: white"> Welcome, <script>document.write(localStorage.getItem("Username"));</script></h1>
 
     <div class="col-md-4">
         <div class="panel panel-primary">
@@ -158,7 +137,7 @@
             </div>
 
 
-                <div id="tweets">
+                <div class="ScrollStyle" id="tweets">
 
                 </div>
 
@@ -183,9 +162,13 @@
 
                                 var mainelement = document.createElement("div");
                                 mainelement.id = "indivtweet";
+<<<<<<< Updated upstream
                                 mainelement.type = "hidden";
                                 mainelement.value = "ID";
                                 mainelement.class = "tech";
+=======
+
+>>>>>>> Stashed changes
 
                                 var im = document.createElement('img');
                                 im.src = data[i]['user']['profile_image_url'];
@@ -205,6 +188,8 @@
 
                                 var element = document.getElementById("tweets");
                                 element.appendChild(mainelement);
+
+                                mainelement.className = "eachcolumn";
                             }
                             
                                 
@@ -239,7 +224,7 @@
                 </center>
             </div>
 
-            <div id="facebookposts">
+            <div class="ScrollStyle" id="facebookposts">
             </div>
 
 
@@ -408,7 +393,6 @@
            -->
         </div>
     </div>
-</div>
 
 </body>
 </html>
