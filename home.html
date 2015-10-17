@@ -31,11 +31,6 @@
 </head>
 <body>
 
-<div class="container demo-2">
-    <div class="content">
-        <div id="large-header" class="large-header" style="height: 733px;">
-            <canvas id="demo-canvas" width="915" height="733"></canvas>
-
 <div class="container">
 
     <!-- Static navbar -->
@@ -75,15 +70,12 @@
                 </div>
             </div>
             <!-- add tweet here -->
-<<<<<<< HEAD
-            <div class="container-fluid">
-                <h1>A Tweet Title</h1>
-                <p>Tweet Text</p>
-            </div>
-            <div class="container-fluid">
-                <h1>A Tweet Title</h1>
-                <p>Tweet Text</p>
-            </div>
+
+                <div class="container-fluid" id="tweets">
+
+                </div>
+
+
 
                 <script type="text/javascript" src="js/codebird.js"></script>
 
@@ -97,25 +89,29 @@
                         {},
                         function (reply, rate, err) {
                             var data = reply;
-                            /*var previousData = "";
+                            var previousData = "";
                             for(var i = 0; i < data.length; i++) {
-                                var para = document.createElement("p" + i);
+                                var h1 = document.createElement("h1");
+
+                                var h1t = document.createTextNode("@" + data[i]['user']['screen_name']);
+                                var para = document.createElement("p");
                                 var node = document.createTextNode(data[i]['text']);
+                                h1.appendChild(h1t);
+                                h1.appendChild(para);
                                 para.appendChild(node);
                                 var element = document.getElementById("tweets");
-                                element.appendChild(para);
-                            }*/
-                                console.log(data[0]['text']);
+                                element.appendChild(h1);
+                            }
+                                console.log(data[0]['user']['screen_name']);
                             console.log(err);
                         }
                 );
 
 
             </script>
-=======
             <!-- <div id="tweet"></div> -->
-            <div class="container-fluid" id="content"></div>
 
+         <!--
             <script type="text/jsx">
             
                 var BuckysComponent = React.createClass({
@@ -135,8 +131,8 @@
                     </div>, document.getElementById('content'));
 
             </script>
+            -->
             
->>>>>>> origin/master
             <br>
             <br>
         </div>
@@ -170,18 +166,10 @@
         </div>
     </div>
 </div>
-        </div>
-    </div>
-    <h1 class="main-title">Spirit</h1>
-</div>
-
-</div>
-</div>
 
 </body>
 </html>
 
-</div> <!-- /container -->
 
 <script src="js/rAF.js"></script>
 <script src="js/demo-2.js"></script>
