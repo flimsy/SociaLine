@@ -268,12 +268,9 @@
                     
                     
                     user_pID = result['id'];
-                    getActivities(user_pID);
+                    getuserActivities(user_pID);
                     //$('#gposts').html(result['displayName']);
-                    
-                    
-                    
-                    ////
+
                 }})
             }
             
@@ -285,20 +282,20 @@
                 gapi.client.request({path:'/plus/v1'+url, method:'GET', callback:function(result) {
                     console.log(result);
                     console.log(result['displayName']);
-                    //console.log(result['name']);
+                    
+                    console.log(result['items'].length);
                     
                     circles_pID = result['items'][2]['id'];
-                    getActivities(circles_pID);
+                    
+                    
+                    //getcirclesActivities(circles_pID);
                     
                     //$('#gposts').html(result['displayName']);
                     
-                    
-                    
-                    ////
                 }})
             }
             
-            function getActivities(pID) {
+            function getuserActivities(pID) {
                 var key = "AIzaSyAXaL2j3SCW-FdhdaomsiKVW2VDX-iG-ts";
                 var activities = null;
                 var URL = "https://www.googleapis.com/plus/v1/people/"+pID+"/activities/public?alt=json&key=" + key;
@@ -315,11 +312,38 @@
             
                 //handleRequestIssue(request);
                 }
+                var name;
+                var img1;
+                var message;
+                
                 for (var i=0; i < activities.length; i++) {
                     console.log("trying to do something with an activity: " + i);
                     var activity = activities[i];
+                    
                     console.log(activity.id);
+                    var mainelement = document.createElement("div");
+                    var act = document.createElement(h2);
+                    var act1 = document.createTextNode(activities.actor['displayName']);
+                    
+                    var im3 = document.createElement("img");
+                    im3.src = activities.actor['image'][0];
+                        
+                    
+                    var para = document.createElement("p");
+                    var node = document.createTextNode(activities.content);//put the user text or postt
+                    para.appendChild(node);
+
+                    h1.appendChild(im)
+                    h1.appendChild(h1t);
+                    h1.appendChild(para);
+
+                    mainelement.appendChild(h1);
+
+                    var element = document.getElementById("gposts");
+                    element.appendChild(mainelement);
                 }
+                
+                    
             }
             
             
