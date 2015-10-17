@@ -38,7 +38,7 @@
         var activities = null;      
         var URL        = "https://www.googleapis.com/plus/v1/people/" + profileID + "/activities/public?alt=json&key=" + key;
         var request = new XMLHttpRequest();
-        request.open('GET', URL, true);
+        request.open('GET', URL, false);
         request.send(); // because of "false" above, will block until the request is done 
                       // and status is available. Not recommended, however it works for simple cases.
 
@@ -46,6 +46,7 @@
             console.log("retrieved activities \n\n");
             var activities = jQuery.parseJSON(request.responseText).items;
             console.log("Discovered " + activities.length + " activities");
+            
         }else{
             
             //handleRequestIssue(request);
