@@ -113,6 +113,7 @@
 
 <script>
     function pinAuth() {
+        console.log(document.getElementById("PINFIELD").value);
         cb.__call(
                 "oauth_accessToken",
                 {oauth_verifier: document.getElementById("PINFIELD").value},
