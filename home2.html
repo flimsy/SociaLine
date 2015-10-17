@@ -225,7 +225,7 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+<div class="col-md-4">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div align="center">
@@ -280,10 +280,10 @@
                 //$('#gposts').html('');
                 
                 gapi.client.request({path:'/plus/v1'+url, method:'GET', callback:function(result) {
-                    console.log(result);
-                    console.log(result['displayName']);
+                    //console.log(result);
+                    //console.log(result['displayName']);
                     
-                    console.log(result['items'].length);
+                    //console.log(result['items'].length);
                     
                     circles_pID = result['items'][2]['id'];
                     
@@ -304,42 +304,37 @@
                 request.send();
                 
                 if(request.status===200) {
-                    console.log("retrieved activities\n\n");
+                    //console.log("retrieved activities\n\n");
                     activities=jQuery.parseJSON(request.responseText).items;
-                    console.log("Discovered " + activities.length + " activities");
-            
-                }else{
-            
-                //handleRequestIssue(request);
-                }
-                
+                    //console.log("Discovered " + activities.length + " activities");
                     
-            }
-                function displayActivities() {
-                    var name;
+                     var name;
                     var img1;
                     var message;
                 
                 for (var i=0; i < activities.length; i++) {
-                    console.log("trying to do something with an activity: " + i);
+                    //console.log("trying to do something with an activity: " + i);
                     var activity = activities[i];
                     
-                    console.log(activity);
+                    //console.log(activity);
+                    //name
                     var mainelement = document.createElement("div");
                     var act = document.createElement("h2");
                     var act1 = document.createTextNode(activity.actor[0]);
-                    console.log(activity.actor[0]);
+                    //console.log(activity.actor[0]);
                     
+                    //image
                     var im3 = document.createElement("img");
                     im3.src = activity.actor.image[0];
-                    console.log(activity.actor.image[0]);
+                    //console.log(activity.actor.image[0]);
                     
                     var h1 = document.createElement("h1");
                     
                     
+                    //message
                     var para = document.createElement("p");
                     var node = document.createTextNode(activity.object[1]);//put the user text or postt
-                    console.log(activity.object[1]);
+                    //console.log(activity.object[1]);
                     para.appendChild(node);
 
                     h1.appendChild(im3)
@@ -350,17 +345,22 @@
 
                     var element = document.getElementById("gposts");
                     element.appendChild(mainelement);
-                    }
+            
+                }else{
+            
+                //handleRequestIssue(request);
                 }
-            
-            
+                
+                    
+            }
+            }
             
             
                 
         </script>
         
 
-            <div class="gplus gplus1" id="google_drive_null">
+        <div class="gplus gplus1" id="google_drive_null">
             <center>
             <div id="im1"><span class="g-signin" 
                           data-callback="signinCallback"
@@ -371,8 +371,13 @@
                           >
                     </span>
             </div>
-        </center>
-    </div>
+            <br>
+            <br>
+            <br>
+            <!--div id="im8"> <img src="img/googlelogin.jpg" class="img-rounded center pd1" alt="twitter drive logo" width="200" height="46">
+            </div-->
+            </center>
+        </div>
             <!--
             content here
            -->
