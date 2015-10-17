@@ -35,13 +35,33 @@
     function getActivities(){
         
         
-        var activities = null;      
-        var URL        = "https://www.googleapis.com/plus/v1/people/" + profileID + "/activities/public?alt=json&key=" + key;
+        var activities = null;
+        
+        // CIRCLE LISTS
+        var CircleURL = "https://www.googleapis.com/plus/v1/people/me/people/connected?key="+ key;
+        
+        // USER ACTIVITIES
+        var URL = "https://www.googleapis.com/plus/v1/people/" + profileID + "/activities/public?alt=json&key=" + key;
+        
         var request = new XMLHttpRequest();
+        
+        // CIRCLE REQUEST
+        var CircleRequest = new XMLHttpRequest();
+        CircleRequest.open('GET', CircleURL, false);
+        CircleRequest.send();
+        
+        if (CircleRequest.status === 200) {
+            console.log("retrieved activities \n\n");
+            var CircleActivities = jQuery.parseJSON(request.responseText).items;
+            console.log("Discovered " + CircleActivities.length + " activities");
+        } else {
+            console.log("BIG ERRROOORORO");
+        }
+        
+        // USER REQUEST
         request.open('GET', URL, false);
-        request.send(); // because of "false" above, will block until the request is done 
+        request.send(); // because of "false" above, will block until the request is done
                       // and status is available. Not recommended, however it works for simple cases.
-
         if (request.status === 200) {
             console.log("retrieved activities \n\n");
             activities = jQuery.parseJSON(request.responseText).items;
@@ -51,6 +71,7 @@
             
             //handleRequestIssue(request);
         }
+        
         
         //console.log("activities " + activities);
         
