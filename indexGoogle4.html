@@ -43,8 +43,15 @@
             }
             
             function gAPI(url) {
+                var userActivities=null;
                 gapi.client.request({path:'/plus/v1'+url, method:'GET', callback:function(result) {
                     console.log(result);
+                    userActivities = JQuery.parseJSON(request.responseText).items;
+                    console.log("Discovered " + userActivities.length + " user activities");
+                    for(var i=0; i<userActivity.length; i++) {
+                        var activity = userActivities[i];
+                        console.log(activity.id);
+                    }
                 }})
             }
             
