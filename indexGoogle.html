@@ -32,22 +32,14 @@
       
       };
         
-    // Gets the activities for a profile
-    function getActivities(){
-        
-        
+    
+    function getCircles() {
         var activities = null;
-        
         // CIRCLE LISTS
         //var CircleURL = "https://www.googleapis.com/plus/v1/people/"+profileID+"/people/connected?key="+ key;
-        var URL ="https://www.googleapis.com/plusDomains/v1/people/"+profileID+"/circles?access_token="+id_token;
+        var CircleURL ="https://www.googleapis.com/plusDomains/v1/people/"+profileID+"/circles?access_token="+id_token;
         
-        // USER ACTIVITIES
-        //var URL = "https://www.googleapis.com/plus/v1/people/" + profileID + "/activities/public?alt=json&key=" + key;
-        
-        var request = new XMLHttpRequest();
-        
-        /*
+                
         // CIRCLE REQUEST
         var CircleRequest = new XMLHttpRequest();
         CircleRequest.open('GET', CircleURL, false);
@@ -60,7 +52,20 @@
         } else {
             console.log("BIG ERRROOORORO");
         }
-        */
+        
+    }
+        
+        
+    // Gets the activities for a profile
+    function getActivities(){
+        
+        
+        var activities = null;
+        
+        // USER ACTIVITIES
+        var URL = "https://www.googleapis.com/plus/v1/people/" + profileID + "/activities/public?alt=json&key=" + key;
+        
+        var request = new XMLHttpRequest();
         
         // USER REQUEST
         request.open('GET', URL, false);
@@ -94,7 +99,10 @@
       
        <g:plusone></g:plusone>
       <div>
-      <input type="button" id="getActivities" onclick="getActivities();" /></div>
+      <input type="button" id="getActivities" value="Get User Feed" onclick="getActivities();" /></div>
+      
+      <div>
+      <input type="button" id="getCircles" value="Get Circles" onclick="getCircles();" /></div>
       
   </body>
 </html>
