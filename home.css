@@ -19,7 +19,9 @@ body {
 }
 
 
-
+.form-control {
+    width: 150px;
+}
 
 .navbar-brand {
     font-family: myFirstFont;
