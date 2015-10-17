@@ -45,7 +45,7 @@
             }
             else {
                 console.log('initiate FB login...');
-                FB.login();
+
             }
         });
 
@@ -68,7 +68,7 @@
         FB.api(
                 '/me',
                 'GET',
-                {"fields":"posts.limit(10)"},
+                {"fields":"posts.limit(50)"},
                 function(response) {
                     var data = response;
                     console.log(response);
@@ -116,14 +116,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="home.html">SociaLine</a>
+                <a class="navbar-brand" href="home2.html">SociaLine</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="submission.html">New</a></li>
                     <li><a href="setup.html">Setup</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="about.html">About</a></li>
 
                 </ul>
             </div><!--/.nav-collapse -->
@@ -144,7 +144,7 @@
             </div>
             <!-- add tweet here -->
 
-                <div id="tweets">
+                <div class="ScrollStyle" id="tweets">
 
                 </div>
 
@@ -214,7 +214,7 @@
             </div>
 
 
-            <div id="facebookposts">
+            <div class="ScrollStyle" id="facebookposts">
             </div>
 
 
