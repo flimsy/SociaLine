@@ -46,6 +46,7 @@
             
             function gAPI(url) {
                 //var userActivities=null;
+                $('#result').html('');
                 
                 gapi.client.request({path:'/plus/v1'+url, method:'GET', callback:function(result) {
                     console.log(result);
@@ -53,14 +54,14 @@
                     ////////
                     
                     //userActivities = jQuery.parseJSON(result.responseText).items;
-                    //console.log("Discovered " + userActivities.length + " user activities");
+                    console.log("Discovered " + result.length + " user activities");
                     for(var i=0; i<result.length; i++) {
                         var activity = result[i];
                         console.log("id: "+activity.id +" title: "+activity.title);
                     }
                     
                     ////
-                    //$('#result').html(print_r(result));
+                    $('#result').html(print_r(result));
                 }})
             }
             
