@@ -229,7 +229,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div align="center">
-                    <img src="img/google_plus.png" alt="googleplus" height="50" width="50" class="img-responsive">
+                    <!--img src="img/google_plus.png" alt="googleplus" height="50" width="50" class="img-responsive"-->
                     <h3 class="panel-title">Google +</h3>
                 </div>
             </div>
@@ -249,34 +249,81 @@
             function signinCallback(authResult) {
                 console.log(authResult);
                 if(authResult['access_token']) {
-                    gAPI('/people/me');
+                    user_gAPI('/people/me');
+                    circles_gAPI('/people/me/people/visible');
                 } else if (authResult['error']) {
                     console.log("BIG ERRROROROR");
                 }
             }
+                
+            var user_pID;
             
-            function gAPI(url) {
-                //var userActivities=null;
-                //$('#result').html('');
-                $('#gposts').html('');
+            function user_gAPI(url) {
+                //$('#gposts').html('');
                 
                 gapi.client.request({path:'/plus/v1'+url, method:'GET', callback:function(result) {
                     console.log(result);
                     console.log(result['displayName']);
-                    console.log(result['name']);
+                    //console.log(result['name']);
                     
-                    $('#gposts').html(result['displayName']);
+                    
+                    user_pID = result['id'];
+                    getActivities(user_pID);
+                    //$('#gposts').html(result['displayName']);
                     
                     
                     
                     ////
-                    //$('#result').html(print_r(result));
                 }})
             }
             
-            function print_r(o){
-                return JSON.stringify(o,null,'\t').replace(/\n/g,'<br>').replace(/\t/g,'&nbsp;&nbsp;&nbsp;'); 
-            }  
+            var circles_pID;
+                
+            function circles_gAPI(url) {
+                //$('#gposts').html('');
+                
+                gapi.client.request({path:'/plus/v1'+url, method:'GET', callback:function(result) {
+                    console.log(result);
+                    console.log(result['displayName']);
+                    //console.log(result['name']);
+                    
+                    circles_pID = result['items'][2]['id'];
+                    getActivities(circles_pID);
+                    
+                    //$('#gposts').html(result['displayName']);
+                    
+                    
+                    
+                    ////
+                }})
+            }
+            
+            function getActivities(pID) {
+                var key = "AIzaSyAXaL2j3SCW-FdhdaomsiKVW2VDX-iG-ts";
+                var activities = null;
+                var URL = "https://www.googleapis.com/plus/v1/people/"+pID+"/activities/public?alt=json&key=" + key;
+                var request = new XMLHttpRequest();
+                request.open('GET', URL, false);
+                request.send();
+                
+                if(request.status===200) {
+                    console.log("retrieved activities\n\n");
+                    activities=jQuery.parseJSON(request.responseText).items;
+                    console.log("Discovered " + activities.length + " activities");
+            
+                }else{
+            
+                //handleRequestIssue(request);
+                }
+                for (var i=0; i < activities.length; i++) {
+                    console.log("trying to do something with an activity: " + i);
+                    var activity = activities[i];
+                    console.log(activity.id);
+                }
+            }
+            
+            
+            
             
                 
         </script>
@@ -284,7 +331,14 @@
 
             <div class="gplus gplus1" id="google_drive_null">
             <center>
-            <div id="im1"> <img src="img/google_plus.png" class="img-rounded center" alt="google drive logo" width="100" height="100">
+            <div id="im1"><span class="g-signin" 
+                          data-callback="signinCallback"
+                          data-clientid="921670254349-04pq5ocn94v24vj0s5m5g2jciu9obphj.apps.googleusercontent.com"
+                          data-cookiepolicy="single_host_origin"
+                          data-requestvisibleactions="http://schemas.google.com/AddActicty"
+                          data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email"
+                          >
+                    </span>
             </div>
         </center>
     </div>
