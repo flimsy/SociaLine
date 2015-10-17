@@ -23,7 +23,29 @@
         })
       });
     }
-
+      
+    function requestCircles() {
+        /*var request = gapi.client.plus.people.list({
+            'userId' : 'me',
+            'collection' : 'visible'
+        });
+        */
+        gapi.client.load('plus', 'v1', function() {
+            gapi.client.plus.people.list( {'userId' : 'me' }).execute(function(resp) {
+                console.log(resp);
+            })
+        });
+    
+/*
+        request.execute(function(resp) {
+        var numItems = resp.items.length;
+        for (var i = 0; i < numItems; i++) {
+            console.log(resp.items[i].displayName);
+            }
+        });
+        */
+    }
+    
     function onSuccess() {
       gapi.load('client', function() {
         // based on http://stackoverflow.com/a/15384981
@@ -31,20 +53,6 @@
         requestProfileData();
         requestCircles();
       });
-    }
-      
-    function requestCircles() {
-        var request = gapi.client.plus.people.list({
-            'userId' : 'me',
-            'collection' : 'visible'
-        });
-
-        request.execute(function(resp) {
-        var numItems = resp.items.length;
-        for (var i = 0; i < numItems; i++) {
-            console.log(resp.items[i].displayName);
-            }
-        });
     }
 
       
