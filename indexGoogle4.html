@@ -50,7 +50,8 @@
                 
                 gapi.client.request({path:'/plus/v1'+url, method:'GET', callback:function(result) {
                     console.log(result);
-                    console.log(result['userId']);
+                    console.log(result['displayName']);
+                    console.log(result['name']);
                     
                     ////////
                     
