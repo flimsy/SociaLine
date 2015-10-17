@@ -323,14 +323,14 @@
                     console.log(activity);
                     var mainelement = document.createElement("div");
                     var act = document.createElement("h2");
-                    var act1 = document.createTextNode(activities.actor[0]);
+                    var act1 = document.createTextNode(activitiy.actor[0]);
                     
                     var im3 = document.createElement("img");
-                    im3.src = activities.actor['image'][0];
+                    im3.src = activity.actor[2][0];
                         
                     
                     var para = document.createElement("p");
-                    var node = document.createTextNode(activities.object[1]);//put the user text or postt
+                    var node = document.createTextNode(activity.object[1]);//put the user text or postt
                     para.appendChild(node);
 
                     h1.appendChild(im3)
