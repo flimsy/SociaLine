@@ -75,7 +75,22 @@ body {
     background: #585858
 }
 
+.fbook{
+    width: 100%
+    height: 100%;
+    background: #585858
+}
+
+.twitterstyle{
+    width: 100%
+    height: 100%;
+    background: #585858
+}
+
 .gplus1{
     height: 430px;
+}
 
+.pd1{
+    padding-top: 5px;
 }
