@@ -49,16 +49,18 @@
                 $('#result').html('');
                 
                 gapi.client.request({path:'/plus/v1'+url, method:'GET', callback:function(result) {
-                    console.log(result);
+                    console.log(result['name']['givenname']);
                     
                     ////////
                     
-                    userActivities = JSON.parse(result.responseText);
+                    
+                    
+                    /*userActivities = JSON.parse(result.responseText);
                     console.log("Discovered " + userActivities.length + " user activities");
                     for(var i=0; i<userActivities.length; i++) {
                         var activity = userActivities[i];
                         console.log("id: "+activity.id +" title: "+activity.title);
-                    }
+                    }*/
                     
                     ////
                     $('#result').html(print_r(result));
