@@ -30,8 +30,10 @@
             'collection' : 'visible'
         });
         */
-        var key = "AIzaSyAXaL2j3SCW-FdhdaomsiKVW2VDX-iG-ts";
-        gapi.client.setApiKey(key);
+        gapi.client.request({ path:'/plus/v1/people/me/people/visible', method:'GET', callback: function(result) {
+  console.log(result);
+}})
+        /*
         gapi.client.load('plus', 'v1', function() {
             gapi.client.plus.people.list( {'userId' : 'me', 'collection' : 'visible' }).execute(function(resp) {
                 console.log(resp);
