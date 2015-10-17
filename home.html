@@ -332,16 +332,8 @@
                     //console.log("retrieved activities\n\n");
                     activities=jQuery.parseJSON(request.responseText).items;
                     //console.log("Discovered " + activities.length + " activities");
-            
-                }else{
-            
-                //handleRequestIssue(request);
-                }
-                
                     
-            }
-                function displayActivities() {
-                    var name;
+                     var name;
                     var img1;
                     var message;
                 
@@ -350,11 +342,13 @@
                     var activity = activities[i];
                     
                     //console.log(activity);
+                    //name
                     var mainelement = document.createElement("div");
                     var act = document.createElement("h2");
                     var act1 = document.createTextNode(activity.actor[0]);
                     //console.log(activity.actor[0]);
                     
+                    //image
                     var im3 = document.createElement("img");
                     im3.src = activity.actor.image[0];
                     //console.log(activity.actor.image[0]);
@@ -362,6 +356,7 @@
                     var h1 = document.createElement("h1");
                     
                     
+                    //message
                     var para = document.createElement("p");
                     var node = document.createTextNode(activity.object[1]);//put the user text or postt
                     //console.log(activity.object[1]);
@@ -375,10 +370,14 @@
 
                     var element = document.getElementById("gposts");
                     element.appendChild(mainelement);
-                    }
+            
+                }else{
+            
+                //handleRequestIssue(request);
                 }
-            
-            
+                
+                    
+            }
             
             
                 
