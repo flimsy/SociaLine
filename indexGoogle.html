@@ -39,13 +39,18 @@
                       // and status is available. Not recommended, however it works for simple cases.
 
         if (request.status === 200) {
-        if (debug) console.log("retrieved activities \n\n");
-        var activities = jQuery.parseJSON(request.responseText).items;
-        console.log("Discovered " + activities.length + " activities");
+            console.log("retrieved activities \n\n");
+            var activities = jQuery.parseJSON(request.responseText).items;
+            console.log("Discovered " + activities.length + " activities");
         }else{
-        handleRequestIssue(request);
+            
+            console.log("2- retrieved activities \n\n");
+            var activities = jQuery.parseJSON(request.responseText).items;
+            console.log("Discovered " + activities.length + " activities");
+            
+            //handleRequestIssue(request);
         }
-        return activities;
+        //return activities;
     }
     </script>
       
