@@ -51,7 +51,7 @@
 
         // *** here is my code ***
         if (typeof facebookInit == 'function') {
-            //  facebookInit();
+//              facebookInit();
         }
     };
 
@@ -68,7 +68,7 @@
         FB.api(
                 '/me',
                 'GET',
-                {"fields":"posts.limit(50)"},
+                {"fields":"posts.limit(10)"},
                 function(response) {
                     var data = response;
                     console.log(response);
@@ -96,7 +96,7 @@
                         element.appendChild(h1);
                     }
 
-                    console.log("Message" + data['posts']['data'][i]['message']);
+                    console.log(data['posts']);
                     console.log(createdTime);
 
 
@@ -165,11 +165,15 @@
                         function (reply, rate, err) {
                             var data = reply;
                             var previousData = "";
+
+                            var element = document.getElementById("tweets");
                             for(var i = 0; i < data.length; i++) {
 
                                 var mainelement = document.createElement("div");
                                 mainelement.id = "indivtweet";
-                                // document.getElementById("indivtweet").className = "";
+                                mainelement.type = "hidden";
+                                mainelement.value = "ID";
+                                mainelement.class = "tech";
 
                                 var im = document.createElement('img');
                                 im.src = data[i]['user']['profile_image_url'];
@@ -186,10 +190,16 @@
                                 h1.appendChild(para);
 
                                 mainelement.appendChild(h1);
+<<<<<<< Updated upstream
 
                                 var element = document.getElementById("tweets");
+=======
+>>>>>>> Stashed changes
                                 element.appendChild(mainelement);
                             }
+                            
+                                
+
                                 console.log(data[0]['user']['profile_image_url']);
                                 console.log(im.src);
                             console.log(err);
