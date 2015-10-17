@@ -300,7 +300,7 @@
                 
                 var URL = "https://www.googleapis.com/plus/v1/people/"+pID+"/activities/public?alt=json&key=" + key;
                 var request = new XMLHttpRequest();
-                request.open('GET', URL, false);
+                request.open('GET', URL, true);
                 request.send();
                 
                 if(request.status===200) {
