@@ -23,6 +23,7 @@
             <a href="#" onclick="gAPI('/people/me/people/visible');">/me/people/visible</a>
         </span>
         
+        <div id="result"></div>
         
         <script type="text/javascript">
             (function() {
@@ -44,20 +45,22 @@
             }
             
             function gAPI(url) {
-                var userActivities=null;
+                //var userActivities=null;
                 
                 gapi.client.request({path:'/plus/v1'+url, method:'GET', callback:function(result) {
                     console.log(result);
                     
                     ////////
-                    userActivities = jQuery.parseJSON(result.responseText).items;
-                    console.log("Discovered " + userActivities.length + " user activities");
-                    for(var i=0; i<userActivity.length; i++) {
-                        var activity = userActivities[i];
+                    
+                    //userActivities = jQuery.parseJSON(result.responseText).items;
+                    //console.log("Discovered " + userActivities.length + " user activities");
+                    for(var i=0; i<result.length; i++) {
+                        var activity = result[i];
                         console.log("id: "+activity.id +" title: "+activity.title);
                     }
-                    ////
                     
+                    ////
+                    //$('#result').html(print_r(result));
                 }})
             }
             
