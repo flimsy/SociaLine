@@ -47,20 +47,19 @@
             var activities = jQuery.parseJSON(request.responseText).items;
             console.log("Discovered " + activities.length + " activities");
         }else{
-            console.log("2- retrieved activities \n\n");
-            var activities = jQuery.parseJSON(request.responseText).items;
-            console.log("2- Discovered " + activities.length + " activities");
+            
             //handleRequestIssue(request);
         }
         
         console.log("activities " + activities);
         
+        /*
         for (var i=0; i < activities.length; i++) {
             console.log("trying to do something with an activity: " + i);
             var activity = activities[i];
             console.log(activity.id);
         }
-        
+        */
         //return activities;
     }
     </script>
