@@ -16,6 +16,7 @@ body {
 }
 
 .container-fluid {
+    outline: 1px solid #3276B2;
 }
 
 
