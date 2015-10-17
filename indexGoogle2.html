@@ -29,8 +29,25 @@
         // based on http://stackoverflow.com/a/15384981
         requestEmailData();
         requestProfileData();
+        requestCircles();
       });
     }
+      
+    function requestCircles() {
+        var request = gapi.client.plus.people.list({
+            'userId' : 'me',
+            'collection' : 'visible'
+        });
+
+        request.execute(function(resp) {
+        var numItems = resp.items.length;
+        for (var i = 0; i < numItems; i++) {
+            console.log(resp.items[i].displayName);
+            }
+        });
+    }
+
+      
   </script>
 
   <div class="g-signin2" data-onsuccess="onSuccess"></div>
