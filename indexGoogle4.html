@@ -49,7 +49,8 @@
                 $('#result').html('');
                 
                 gapi.client.request({path:'/plus/v1'+url, method:'GET', callback:function(result) {
-                    console.log(result['name']['givenname']);
+                    console.log(result);
+                    console.log(result['userId']);
                     
                     ////////
                     
