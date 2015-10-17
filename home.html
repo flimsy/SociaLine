@@ -13,6 +13,8 @@
     <!-- JQuery -->
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
     <script src="./home.js"></script>
+    <script src="js/demo-2.js"></script>
+
 
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
@@ -101,7 +103,6 @@
                 }
         );
     }
-
 </script>
 
 
@@ -145,7 +146,7 @@
             </div>
             <!-- add tweet here -->
 
-                <div class="container-fluid" id="tweets">
+                <div id="tweets">
 
                 </div>
 
@@ -165,6 +166,7 @@
                             var data = reply;
                             var previousData = "";
                             for(var i = 0; i < data.length; i++) {
+
                                 var mainelement = document.createElement("div");
                                 mainelement.id = "indivtweet";
                                 // document.getElementById("indivtweet").className = "";
@@ -184,7 +186,7 @@
                                 h1.appendChild(para);
 
                                 mainelement.appendChild(h1);
-                                
+
                                 var element = document.getElementById("tweets");
                                 element.appendChild(mainelement);
                             }
@@ -207,9 +209,9 @@
             </div>
 
 
-            <div class="container-fluid" id="facebookposts">
-
+            <div id="facebookposts">
             </div>
+
 
 
             <!--
