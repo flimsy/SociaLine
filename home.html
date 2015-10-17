@@ -322,7 +322,7 @@
                     
                     console.log(activity.id);
                     var mainelement = document.createElement("div");
-                    var act = document.createElement(h2);
+                    var act = document.createElement("h2");
                     var act1 = document.createTextNode(activities.actor['displayName']);
                     
                     var im3 = document.createElement("img");
@@ -333,8 +333,8 @@
                     var node = document.createTextNode(activities.content);//put the user text or postt
                     para.appendChild(node);
 
-                    h1.appendChild(im)
-                    h1.appendChild(h1t);
+                    h1.appendChild(im3)
+                    h1.appendChild(act1);
                     h1.appendChild(para);
 
                     mainelement.appendChild(h1);
