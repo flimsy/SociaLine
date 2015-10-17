@@ -44,7 +44,7 @@
 
         if (request.status === 200) {
             console.log("retrieved activities \n\n");
-            var activities = jQuery.parseJSON(request.responseText).items;
+            activities = jQuery.parseJSON(request.responseText).items;
             console.log("Discovered " + activities.length + " activities");
         }else{
             //handleRequestIssue(request);
