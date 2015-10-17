@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de-de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hacking Google+</title>
+    <meta name="description" content="Follow us learning how to use the Google+-APIs - Step by Step!" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />    
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />    
+    <link rel="stylesheet" type="text/css" href="css/main.css" />    
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div id="content">
+        <div class="hero-unit">
+          <h1>Hacking Google+</h1>
+          <p><br/>Follow us learning how to use the Google+-APIs - Step by Step!<br/>
+             A tutorial by <a href="http://fb.com/diesocialisten">Die Socialisten</a>, 
+             Read our <a href=" http://garage.socialisten.at/2013/02/hacking-google…sign-in-button">blog-post to learn how it's done!</a></p>
+        </div>
+
+        <section>
+          <!-- Place this tag where you want the sign-in button to render -->
+          <span id="signinButton" style="display:none;">
+            <span
+              class="g-signin"
+              data-callback="signinCallback"
+              data-clientid="921670254349-04pq5ocn94v24vj0s5m5g2jciu9obphj.apps.googleusercontent.com"
+              data-cookiepolicy="single_host_origin"
+              data-requestvisibleactions="http://schemas.google.com/AddActivity"
+              data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email"
+              data-width="wide">
+            </span>
+          </span>
+
+          <span id="apiCalls" style="display:none;">
+            Some Google+ API-Calls to try:  
+            <a href="#" onclick="gAPI('/people/me');">/people/me</a>&nbsp;|&nbsp;
+            <a href="#" onclick="gAPI('/people/me/people/visible');">/people/me/people/visible</a>&nbsp;|&nbsp;
+            
+          </span>
+
+          <div id="result-container" style="background-color:#e0e0e0;padding:10px;margin-top:15px;">
+            <p><strong>Output:</strong></p>
+            <pre id="result"></div>
+          </div>
+          
+        </section>
+      </div>
+    </div>
+
+  <!-- Let's load the G+ SDK asynchronously... -->
+  <script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/client:plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+  
+  function signinCallback(authResult) {
+    console.log(authResult);
+    if (authResult['access_token']) {
+      // User successfully authorized the G+ App!
+      // Hiding the Sign In-button (& showing API-Demo-Calls), since we are authorized...
+      $('#signinButton').hide();              
+      $('#apiCalls').show();              
+      // Now we use a simple G+ API request /people/me to get info on the current user
+      gAPI ('/people/me');
+    } else if (authResult['error']) {
+      // User has not authorized the G+ App!
+      // Showing the Sign In-button (& hiding API-Demo-Calls), since we are authorized...
+      $('#signinButton').show();
+      $('#apiCalls').hide();              
+    }
+  } 
+  function gAPI (url) {
+    $('#result').html('');
+    gapi.client.request({path:'/plus/v1'+url, method:'GET', callback: function(result) {
+      // Let's dump this to console & DOM:
+      console.log(result);
+      $('#result').html(print_r(result));
+    }})
+  }
+  
+  function print_r(o){
+    return JSON.stringify(o,null,'\t').replace(/\n/g,'<br>').replace(/\t/g,'&nbsp;&nbsp;&nbsp;'); 
+  }      
+  </script>
+  </body>
+</html>

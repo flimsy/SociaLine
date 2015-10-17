@@ -31,6 +31,25 @@
 </head>
 <body>
 
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1720305841531629',
+            xfbml      : true,
+            version    : 'v2.4'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
 <div class="container">
 
     <!-- Static navbar -->
@@ -91,50 +110,41 @@
                             var data = reply;
                             var previousData = "";
                             for(var i = 0; i < data.length; i++) {
-                                var h1 = document.createElement("h1");
+                                var mainelement = document.createElement("div");
+                                mainelement.id = "indivtweet";
+                                // document.getElementById("indivtweet").className = "";
 
+                                var im = document.createElement('img');
+                                im.src = data[i]['user']['profile_image_url'];
+
+                                var h1 = document.createElement("h1");
                                 var h1t = document.createTextNode("@" + data[i]['user']['screen_name']);
+
                                 var para = document.createElement("p");
                                 var node = document.createTextNode(data[i]['text']);
+                                para.appendChild(node);
+
+                                h1.appendChild(im)
                                 h1.appendChild(h1t);
                                 h1.appendChild(para);
-                                para.appendChild(node);
+
+                                mainelement.appendChild(h1);
+                                
                                 var element = document.getElementById("tweets");
-                                element.appendChild(h1);
+                                element.appendChild(mainelement);
                             }
-                                console.log(data[0]['user']['screen_name']);
+                                console.log(data[0]['user']['profile_image_url']);
+                                console.log(im.src);
                             console.log(err);
                         }
                 );
-
-
             </script>
-            <!-- <div id="tweet"></div> -->
-
-         <!--
-            <script type="text/jsx">
-            
-                var BuckysComponent = React.createClass({
-                    render: function() {
-                        return (
-                            <div>
-                                <h3>{this.props.user}</h3>
-                                <p>{this.props.children}</p>
-                            </div>
-                        );
-                    }
-                });
-
-                React.render(
-                    <div>
-                        <BuckysComponent user="username goes here">Tweet goes here</BuckysComponent>
-                    </div>, document.getElementById('content'));
-
-            </script>
+<<<<<<< HEAD
+            <br>
+            <br>
+=======
             -->
-            
-            <br>
-            <br>
+>>>>>>> origin/master
         </div>
     </div>
 
@@ -147,8 +157,23 @@
                 </div>
             </div>
 
-            <br>
-            <br>
+            <div class="container-fluid" id="facebookposts">
+            </div>
+
+            <script>
+                FB.api(
+                        '/me',
+                        'GET',
+                        {"fields":"posts.limit(5)"},
+                        function(response) {
+                            console.log(response);
+                        }
+                );
+
+            </script>
+            <!--
+           content here
+          -->
         </div>
     </div>
 
@@ -161,8 +186,9 @@
                 </div>
             </div>
 
-            <br>
-            <br>
+            <!--
+            content here
+           -->
         </div>
     </div>
 </div>
