@@ -1,0 +1,40 @@
+<html>
+<head>
+   <meta name="google-signin-client_id" content="921670254349-04pq5ocn94v24vj0s5m5g2jciu9obphj.apps.googleusercontent.com">
+   <meta name="google-signin-fetch_basic_profile" content="false">
+   <meta name="google-signin-scope" content="profile email">
+</head>
+<body>
+  <script>
+    function requestEmailData() { 
+      gapi.client.load('oauth2', 'v2', function() {
+        gapi.client.oauth2.userinfo.get().execute(function(resp) {
+          // Shows user email
+          console.log(resp.email);
+        })
+      });
+    }
+
+    function requestProfileData() {
+      gapi.client.load('plus', 'v1', function() {
+        gapi.client.plus.people.get( {'userId' : 'me'} ).execute(function(resp) {
+          // Shows profile information
+          console.log(resp);
+        })
+      });
+    }
+
+    function onSuccess() {
+      gapi.load('client', function() {
+        // based on http://stackoverflow.com/a/15384981
+        requestEmailData();
+        requestProfileData();
+      });
+    }
+  </script>
+
+  <div class="g-signin2" data-onsuccess="onSuccess"></div>
+
+  <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+</body>
+</html>

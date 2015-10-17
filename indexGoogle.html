@@ -9,7 +9,7 @@
   <body>
     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"> </div>
     <script>
-    
+        
         var profileID;
         var id_token;
         var key = "AIzaSyAXaL2j3SCW-FdhdaomsiKVW2VDX-iG-ts";
@@ -32,7 +32,7 @@
       
       };
         
-    
+    /*
     function getCircles() {
         var activities = null;
         // CIRCLE LISTS
@@ -55,6 +55,7 @@
         }
         
     }
+    */
         
     ////////////////////////////////////////////////////////////
     // Gets the activities for a profile
@@ -92,18 +93,6 @@
             console.log(activity.id);
         }
         
-        var request = gapi.client.plus.people.list({
-          'userId' : profileID,
-          'collection' : 'visible'
-        });
-
-        request.execute(function(resp) {
-            var numItems = resp.items.length;
-            for (var i = 0; i < numItems; i++) {
-            console.log(resp.items[i].displayName);
-            }
-        });
-        
         //return activities;
     }
     </script>
@@ -115,7 +104,7 @@
       <input type="button" id="getActivities" value="Get User Feed" onclick="getActivities();" /></div>
       
       <div>
-      <input type="button" id="getCircles" value="Get Circles" onclick="getCircles();" /></div>
+      <!--input type="button" id="getCircles" value="Get Circles" onclick="getCircles();" /></div-->
       
   </body>
 </html>
