@@ -11,6 +11,7 @@
     <script>
     
         var profileID;
+        var id_token;
         var key = "AIzaSyAXaL2j3SCW-FdhdaomsiKVW2VDX-iG-ts";
     ////////////////////////////////
     function onSignIn(googleUser) {
@@ -25,7 +26,7 @@
         console.log("Email: " + profile.getEmail());
 
         // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
+        id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
       
       
@@ -38,7 +39,8 @@
         var activities = null;
         
         // CIRCLE LISTS
-        var CircleURL = "https://www.googleapis.com/plus/v1/people/"+profileID+"/people/connected?alt=json&key="+ key;
+        //var CircleURL = "https://www.googleapis.com/plus/v1/people/"+profileID+"/people/connected?key="+ key;
+        var CircleURL ="https://www.googleapis.com/plusDomains/v1/people/"+profileID+"/circles?access_token="+id_token;
         
         // USER ACTIVITIES
         var URL = "https://www.googleapis.com/plus/v1/people/" + profileID + "/activities/public?alt=json&key=" + key;
@@ -55,9 +57,6 @@
             var CircleActivities = jQuery.parseJSON(request.responseText).items;
             console.log("Discovered " + CircleActivities.length + " activities");
         } else {
-            console.log("2retrieved activities \n\n");
-            var CircleActivities = jQuery.parseJSON(request.responseText).items;
-            console.log("2Discovered " + CircleActivities.length + " activities");
             console.log("BIG ERRROOORORO");
         }
         
