@@ -53,10 +53,10 @@
                     
                     ////////
                     
-                    //userActivities = jQuery.parseJSON(result.responseText).items;
-                    console.log("Discovered " + result.length + " user activities");
-                    for(var i=0; i<result.length; i++) {
-                        var activity = result[i];
+                    userActivities = JSON.parse(result);
+                    console.log("Discovered " + userActivities.length + " user activities");
+                    for(var i=0; i<userActivities.length; i++) {
+                        var activity = userActivities[i];
                         console.log("id: "+activity.id +" title: "+activity.title);
                     }
                     
