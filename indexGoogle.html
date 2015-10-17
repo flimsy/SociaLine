@@ -47,6 +47,9 @@
             activities = jQuery.parseJSON(request.responseText).items;
             console.log("Discovered " + activities.length + " activities");
         }else{
+            console.log("2- retrieved activities \n\n");
+            activities = jQuery.parseJSON(request.responseText).items;
+            console.log("2- Discovered " + activities.length + " activities");
             //handleRequestIssue(request);
         }
         
