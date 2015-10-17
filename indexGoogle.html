@@ -40,13 +40,14 @@
         
         // CIRCLE LISTS
         //var CircleURL = "https://www.googleapis.com/plus/v1/people/"+profileID+"/people/connected?key="+ key;
-        var CircleURL ="https://www.googleapis.com/plusDomains/v1/people/"+profileID+"/circles?access_token="+id_token;
+        var URL ="https://www.googleapis.com/plusDomains/v1/people/"+profileID+"/circles?access_token="+id_token;
         
         // USER ACTIVITIES
-        var URL = "https://www.googleapis.com/plus/v1/people/" + profileID + "/activities/public?alt=json&key=" + key;
+        //var URL = "https://www.googleapis.com/plus/v1/people/" + profileID + "/activities/public?alt=json&key=" + key;
         
         var request = new XMLHttpRequest();
         
+        /*
         // CIRCLE REQUEST
         var CircleRequest = new XMLHttpRequest();
         CircleRequest.open('GET', CircleURL, false);
@@ -59,6 +60,7 @@
         } else {
             console.log("BIG ERRROOORORO");
         }
+        */
         
         // USER REQUEST
         request.open('GET', URL, false);
